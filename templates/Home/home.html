@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block headscript %}
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+{% endblock headscript %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="center-container">
+            <h2 class="heading-2">
+                Est placidus adgium, cesaris.
+            </h2>
+            <p>
+                When the sinner of meditation visualizes the thoughts of the karma, peace will know body.
+            </p>
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="center-container">
+            <h2 class="heading-2">
+                Est placidus adgium, cesaris.
+            </h2>
+            <p>
+                When the sinner of meditation visualizes the thoughts of the karma, peace will know body.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <div class="center-container">
+            <h4 class="heading-4">
+                Also Check
+            </h4>
+        </div>
+        <div class="container">
+            <div class="center-container">
+                <img src="{% static 'img/logo1.png' %}" class="circular-logo">
+            </div>
+
+            <div class="vl"></div>
+
+            <div class="center-container">
+                <img src="{% static 'img/logo2.png' %}" class="circular-logo">
+            </div>
+
+            <div class="vl"></div>
+
+            <div class="center-container">
+                <img src="{% static 'img/logo3.png' %}" class="circular-logo">
+            </div>
+
+            <div class="vl"></div>
+
+            <div class="center-container">
+                <img src="{% static 'img/logo4.png' %}" class="circular-logo">
+            </div>
+
+            <div class="vl"></div>
+
+            <div class="center-container">
+                <img src="{% static 'img/logo5.jpg' %}" class="circular-logo">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact-us-container container">
+        <div class="center-container text-left">
+            <h2 class="heading-2">Contact Us</h2>
+            <div class="contact-us-item">
+                <i class="fas fa-phone"> +20 xxx xxxx xxx</i>
+            </div>
+            <div class="contact-us-item">
+                <i class="fas fa-envelope-square"> example@example.com </i>
+            </div>
+            <div class="contact-us-item">
+                <a>
+                    <i class="fab fa-facebook-f"> Our Official Page </i>
+                </a>
+            </div>
+            <div class="contact-us-item">
+                <a>
+                    <i class="fab fa-twitter"> Our Official Account </i>
+                </a>
+            </div>
+            <div class="contact-us-item">
+                <a>
+                    <i class="fab fa-youtube"> Youtube Channel </i>
+                </a>
+            </div>
+            <div class="contact-us-item">
+                <i class="fas fa-map-marker-alt"> Address goes here </i>
+            </div>
+        </div>
+
+        <div class="vl"></div>
+
+        <div class="center-container">
+            <a>
+                <img src="{% static 'img/logo5.jpg' %}" class="circular-logo" id="contact-us-logo">
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
