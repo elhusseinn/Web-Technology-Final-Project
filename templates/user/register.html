@@ -4,56 +4,57 @@
 {% block title %} Register | Universty Library {% endblock title %}
 
 {% block headscript %}
-    <link rel="stylesheet" href="{% static "css/SignUp.css" %}">
+<link rel="stylesheet" href="{% static " css/SignUp.css" %}">
 {% endblock headscript %}
 
 {% block content %}
 
-<form class="submission-form" id = "frm" method = 'POST'>
-<div>
-    <label for="name">Username</label>
-    <br>
-    <input type="text" name="UserName" id="name" placeholder="Username" required>
-</div>
+<form class="submission-form" id="frm" method='POST'>
+    {% csrf_token %}
+    <div>
+        <label for="name">Username</label>
+        <br>
+        <input type="text" name="UserName" id="name" placeholder="Username" required>
+    </div>
 
-<div>
-    <label for="email">Email</label>
-    <br>
-    <input type="email" name="email" id="email" placeholder="example@example.com" required>
-</div>
+    <div>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email" placeholder="example@example.com" required>
+    </div>
 
-<div>
-    <label for="password">Password</label>
-    <br>
-    <input type="password" name="password" id="password" placeholder="Password" required>
-</div>
+    <div>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+    </div>
 
-<div>
-    <label for="confirm_password">Confirm Password</label>
-    <br>
-    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
-    <hr>
-</div>
+    <div>
+        <label for="confirm_password">Confirm Password</label>
+        <br>
+        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+        <hr>
+    </div>
 
-    <button class = "btn-signup" onclick="confirmPass()" type="submit">Submit</button>
- 
+    <button class="btn-signup" onclick="confirmPass()" type="submit">Submit</button>
+
 
 </form>
 <script>
-    function confirmPass(){
-    const pass = document.getElementById("password").value;
-    const confirmed = document.getElementById("confirm_password").value;
-if(pass != confirmed){
-    alert("password doesn't match please try again!!");
-    document.getElementById("frm").addEventListener("click", function(event){
-  event.preventDefault()
-  location.reload();
-});
-}
+    function confirmPass() {
+        const pass = document.getElementById("password").value;
+        const confirmed = document.getElementById("confirm_password").value;
+        if (pass != confirmed) {
+            alert("password doesn't match please try again!!");
+            document.getElementById("frm").addEventListener("click", function (event) {
+                event.preventDefault()
+                location.reload();
+            });
+        }
 
 
 
-}
+    }
 
 </script>
 
