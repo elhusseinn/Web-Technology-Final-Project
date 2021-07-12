@@ -4,12 +4,13 @@
 {% block title %} Register | Universty Library {% endblock title %}
 
 {% block headscript %}
-    <link rel="stylesheet" href="{% static "css/SignUp.css" %}">
+    <link rel="stylesheet" href='{% static "css/signUp.css" %}'>
 {% endblock headscript %}
 
 {% block content %}
 
 <form class="submission-form" id = "frm" method = 'POST'>
+    {% csrf_token %}
 <div>
     <label for="name">Username</label>
     <br>
