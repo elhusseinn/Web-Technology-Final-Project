@@ -1,25 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/user.css' %}">
-    <title>Register</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-    <div>
-        <form method="POST">
-            {% csrf_token %}
-                {{ form }}
-            <div class='submit-div'>
-                <button type="submit" class="special-btn">
-                    Sign Up
-                </button>
-            </div>
-        </form>
-    </div>
+{% block title %} Register | Universty Library {% endblock title %}
 
-</body>
-</html>
+{% block headscript %}
+    <link rel="stylesheet" href="{% static "css/SignUp.css" %}">
+{% endblock headscript %}
+
+{% block content %}
+
+<form class="submission-form" id = "frm" method = 'POST'>
+<div>
+    <label for="name">Username</label>
+    <br>
+    <input type="text" name="UserName" id="name" placeholder="Username" required>
+</div>
+
+<div>
+    <label for="email">Email</label>
+    <br>
+    <input type="email" name="email" id="email" placeholder="example@example.com" required>
+</div>
+
+<div>
+    <label for="password">Password</label>
+    <br>
+    <input type="password" name="password" id="password" placeholder="Password" required>
+</div>
+
+<div>
+    <label for="confirm_password">Confirm Password</label>
+    <br>
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+    <hr>
+</div>
+
+    <button class = "btn-signup" onclick="confirmPass()" type="submit">Submit</button>
+ 
+
+</form>
+<script>
+    function confirmPass(){
+    const pass = document.getElementById("password").value;
+    const confirmed = document.getElementById("confirm_password").value;
+if(pass != confirmed){
+    alert("password doesn't match please try again!!");
+    document.getElementById("frm").addEventListener("click", function(event){
+  event.preventDefault()
+  location.reload();
+});
+}
+
+
+
+}
+
+</script>
+
+
+{% endblock content %}
