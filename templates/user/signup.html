@@ -9,17 +9,17 @@
 
 {% block content %}
 
-<form class="submission-form" id = "frm">
+<form class="submission-form" id = "frm" method = 'POST'>
 <div>
-    <label for="name">UserName</label>
+    <label for="name">Username</label>
     <br>
-    <input type="text" name="UserName" id="name" placeholder="username" required>
+    <input type="text" name="UserName" id="name" placeholder="Username" required>
 </div>
 
 <div>
     <label for="email">Email</label>
     <br>
-    <input type="email" name="email" id="email" placeholder="xxxx@yyy.com" required>
+    <input type="email" name="email" id="email" placeholder="example@example.com" required>
 </div>
 
 <div>
@@ -29,9 +29,9 @@
 </div>
 
 <div>
-    <label for="confirm_password">confirm Password</label>
+    <label for="confirm_password">Confirm Password</label>
     <br>
-    <input type="password" name="confirm_password" id="confirm_password" placeholder="confirm Password" required>
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
     <hr>
 </div>
 
