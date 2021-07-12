@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Home {% endblock title %}
+{% block title %} Home | Universty Library {% endblock title %}
 
 {% block headscript %}
     <link rel="stylesheet" href="{% static "css/home.css" %}">
@@ -9,109 +9,64 @@
 
 {% block content %}
 
-    <div
-            class="background-img"
-            style="background-image: url('{% static 'img/background.jpg' %}')"
-    >
-    </div>
-
-    <div class="container">
-        <div class="center-container">
-            <h2 class="heading-2">
-                Est placidus adgium, cesaris.
-            </h2>
-            <p>
-                When the sinner of meditation visualizes the thoughts of the karma, peace will know body.
-            </p>
+    <section>
+        <div class="main-image">
+            <img src="{% static 'img/background.jpg' %}"/>
         </div>
+    </section>
 
-        <div class="vl"></div>
+    <section class="bg-dark text-light">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg">
+                    <h3>
+                        Your online library
+                    </h3>
+                    <p>
+                        Now you can browse our books and borrow it online. No need to borrow in person.
+                    </p>
+                </div>
 
-        <div class="center-container">
-            <h2 class="heading-2">
-                Est placidus adgium, cesaris.
-            </h2>
-            <p>
-                When the sinner of meditation visualizes the thoughts of the karma, peace will know body.
-            </p>
+                <div class="col-lg">
+                    <h3>
+                        The Vision of the Library
+                    </h3>
+                    <p>
+                        FCAI-CU to be a leading institution of higher education and scientific research in the fields of computing, informatics and decision support at the regional and international levels.
+                        With the help of the latest technologies, this online library will be a stepping stone for achiving this vision.
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div>
-        <div class="center-container">
-            <h4 class="heading-4">
+    <section>
+        <div class="container py-5">
+            <h2>
                 Also Check
-            </h4>
-        </div>
-        <div class="container">
-            <div class="center-container">
-                <img src="{% static 'img/logo1.png' %}" class="circular-logo">
-            </div>
+            </h2>
+            <div class="row align-items-center suggestions">
+                <div class="col">
+                    <img src="{% static 'img/logo1.png' %}" class="circular-logo">
+                </div>
 
-            <div class="vl"></div>
+                <div class="col">
+                    <img src="{% static 'img/logo2.png' %}" class="circular-logo">
+                </div>
 
-            <div class="center-container">
-                <img src="{% static 'img/logo2.png' %}" class="circular-logo">
-            </div>
+                <div class="col">
+                    <img src="{% static 'img/logo3.png' %}" class="circular-logo">
+                </div>
 
-            <div class="vl"></div>
+                <div class="col">
+                    <img src="{% static 'img/logo4.png' %}" class="circular-logo">
+                </div>
 
-            <div class="center-container">
-                <img src="{% static 'img/logo3.png' %}" class="circular-logo">
-            </div>
-
-            <div class="vl"></div>
-
-            <div class="center-container">
-                <img src="{% static 'img/logo4.png' %}" class="circular-logo">
-            </div>
-
-            <div class="vl"></div>
-
-            <div class="center-container">
-                <img src="{% static 'img/logo5.jpg' %}" class="circular-logo">
+                <div class="col">
+                    <img src="{% static 'img/logo5.jpg' %}" class="circular-logo">
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <div class="contact-us-container container">
-        <div class="center-container text-left">
-            <h2 class="heading-2">Contact Us</h2>
-            <div class="contact-us-item">
-                <i class="fas fa-phone"> +20 xxx xxxx xxx</i>
-            </div>
-            <div class="contact-us-item">
-                <i class="fas fa-envelope-square"> example@example.com </i>
-            </div>
-            <div class="contact-us-item">
-                <a>
-                    <i class="fab fa-facebook-f"> Our Official Page </i>
-                </a>
-            </div>
-            <div class="contact-us-item">
-                <a>
-                    <i class="fab fa-twitter"> Our Official Account </i>
-                </a>
-            </div>
-            <div class="contact-us-item">
-                <a>
-                    <i class="fab fa-youtube"> Youtube Channel </i>
-                </a>
-            </div>
-            <div class="contact-us-item">
-                <i class="fas fa-map-marker-alt"> Address goes here </i>
-            </div>
-        </div>
-
-        <div class="vl"></div>
-
-        <div class="center-container">
-            <a>
-                <img src="{% static 'img/logo5.jpg' %}" class="circular-logo" id="contact-us-logo">
-            </a>
-        </div>
-    </div>
-
+    </section>
 
 {% endblock %}
