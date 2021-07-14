@@ -22,6 +22,14 @@
                 {{ form|crispy }}
         
                 <button class="btn btn-dark mt-3" type="submit">Submit</button>
+
+                {% url 'changepassword' as changepassword_url %}
+                {% if request.get_full_path != changepassword_url %}
+                    <div>
+                        <a href="{% url 'changepassword' %}"> Change Password </a>
+                    </div>
+                {% endif %}
+                
             </form>
         </div>
     </div>

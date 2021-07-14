@@ -5,10 +5,11 @@ from django.utils import timezone
 # Create your models here.
 
 class bookDetail(models.Model):
-    ISBN = models.CharField(max_length=50)
+    ISBN = models.CharField(max_length=50, unique=True)
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     publishDate = models.DateField(default=timezone.now)
+    borrowed = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title
