@@ -44,7 +44,11 @@
 
                     <div class="navbar-nav">
                         {% url 'register' as register_url %}
-                        <a class="nav-link" href="#">Sign in</a>
+                        {% url 'signin' as signin_url %}
+                        <a class="nav-link  {% if request.get_full_path == signin_url %}active{% endif %}" 
+                            href="{% url 'signin' %}">
+                            Sign in
+                        </a>
                         <a class="nav-link {% if request.get_full_path == register_url %}active{% endif %}"
                             href="{% url 'register' %}">
                             Register
