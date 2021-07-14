@@ -9,30 +9,20 @@
 
 {% block content %}
 
-<div id="big-div"></div>
+<div id="big-div">
 
-<script>
-function addBooks(numOfBooks){
-    var codeblock = '<div class="container py-5 body-container">'+
-    '<h1>{{ title }}</h1>'+
-    '<p>ISBN: {{ ISBN }}</p>'+
-    '<p>Author: {{ author }}</p>'+
-    '<p>Publish date: {{ publishDate }}</p>'+
-    '<button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">View details</button>'+
-'</div>';
-
-for(let i = 0; i<numOfBooks;i++){
-    document.getElementById("big-div").innerHTML = codeblock;
-}
+    {%for {{}} in {{}}%}
+    <div class="container py-5 body-container">
+        <h1>{{ title }}</h1>
+        <p>ISBN: {{ ISBN }}</p>
+        <p>Author: {{ author }}</p>
+        <p>Publish date: {{ publishDate }}</p>
+        <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">View details</button>
+    </div>
+    {%end for%}
 
 
-
-}
-
-
-
-</script>
-
+</div>
 
 
 
