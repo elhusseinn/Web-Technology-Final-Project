@@ -9,17 +9,17 @@
 
 {% block content %}
 
-<div id="big-div">
+<div class="flex-display">
 
-    {%for {{}} in {{}}%}
-    <div class="container py-5 body-container">
-        <h1>{{ title }}</h1>
-        <p>ISBN: {{ ISBN }}</p>
-        <p>Author: {{ author }}</p>
-        <p>Publish date: {{ publishDate }}</p>
-        <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">View details</button>
+    {% for book in books %}
+    <div class="container py-5 book-card">
+        <h1>{{ book.title }}</h1>
+        <p>ISBN: {{ book.ISBN }}</p>
+        <p>Author: {{ book.author }}</p>
+        <p>Publish date: {{ book.publishDate }}</p>
+        <a href=" {% url 'bookdetails' book_id=book.id %}"><button class="btn btn-primary mt-3 me-2" type="button">Select Book</button></a>
     </div>
-    {%end for%}
+    {% endfor %}
 
 
 </div>

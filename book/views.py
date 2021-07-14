@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from .models import *
 
-# Create your views here.
+@login_required
 def bookDetails(request, book_id):
     book = bookDetail.objects.filter(id=book_id)
-    print(book)
     return render(request, 'books/details.html', {"book": book[0]})
+
+def browse(request):
+    books = bookDetail.objects.all()
+    return render(request, 'books/browse.html', {'books': books})

@@ -1,3 +1,24 @@
 .body-container{
     min-height: calc(100vh - 159px);
 }
+
+.flex-display{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.book-card{
+    width: 25%;
+    margin: 2%;
+    background: rgba(65, 63, 63, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(65, 63, 63, 0.25);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba(65, 63, 63, 0.25);
+}
+
+.book-card>p, .book-card>a>button{
+    margin-left: 4%;
+}
