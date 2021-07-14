@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ title }} | Universty Library {% endblock title %}
+
+{% block headscript %}
+<link rel="stylesheet" href='{% static "css/common.css" %}'>
+{% endblock headscript %}
+
+{% block content %}
+<div class="container py-5 body-container">
+    <h1>{{ title }}</h1>
+    <p>ISBN: {{ ISBN }}</p>
+    <p>Author: {{ author }}</p>
+    <p>Publish date: {{ publishDate }}</p>
+
+    <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">Borrow</button>
+    <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">Return</button>
+    <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">Extend period</button>
+</div>
+{% endblock content %}
