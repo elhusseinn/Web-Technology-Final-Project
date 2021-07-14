@@ -128,6 +128,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGOUT_REDIRECT_URL = 'home'
