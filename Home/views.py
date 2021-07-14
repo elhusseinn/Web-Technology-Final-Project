@@ -6,6 +6,4 @@ def home(request):
 
     return render(request, 'Home/home.html')
 
-def test(request):
-    return render(request, 'user/profile.html')
 

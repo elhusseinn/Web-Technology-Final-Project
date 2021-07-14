@@ -5,6 +5,7 @@
 
 {% block headscript %}
 <link rel="stylesheet" href='{% static "css/common.css" %}'>
+{% load crispy_forms_tags %}
 {% endblock headscript %}
 
 {% block content %}
@@ -17,15 +18,8 @@
         <form class="col-md" method='POST'>
             {% csrf_token %}
             <h2 class="mb-3">Login</h2>
-            <div class="mb-3">
-                <label for="name" class="form-label">Username</label>
-                <input class="form-control" type="text" name="UserName" id="name" placeholder="Type your username" required>
-            </div>
-    
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input class="form-control" type="password" name="password" id="password" placeholder="Type your password" required>
-            </div>
+            
+            {{ form|crispy }}
     
             <button class="btn btn-dark mt-3" onclick="javascript:void(0)" type="submit">Sign in</button>
         </form>

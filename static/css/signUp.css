@@ -1,10 +1,10 @@
 .submission-form{
     max-width: 500px;
     margin: 2rem auto;
-    border: 2px solid #E74C3C;
-    padding: 2rem;
-    
-}
+    border: 2px solid #555555;
+    padding: 2rem;  
+} 
+
 .btn-signup{
   background-color: #555555;
   border: none;
@@ -12,6 +12,7 @@
   padding: 10px 25px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  position: relative;
+  right: 10px;
   font-size: 16px;
 }

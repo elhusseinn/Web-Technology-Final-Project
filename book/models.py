@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 
-class Book(models.Model):
+class bookDetail(models.Model):
     ISBN = models.CharField(primary_key = True, max_length=50)
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
@@ -18,9 +18,9 @@ class Book(models.Model):
 def tenDays():
         return timezone.now() + timezone.timedelta(days=10)
     
-class Booking(models.Model):
+class booking(models.Model):
     bookedBy = models.ForeignKey(User, on_delete=models.CASCADE)
-    bookedBook = models.ForeignKey(Book, on_delete=models.CASCADE)
+    bookedBook = models.ForeignKey(bookDetail, on_delete=models.CASCADE)
     returnDate = models.DateField(default=tenDays)
     
     class Meta:
