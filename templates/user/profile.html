@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block headscript %}
+<link rel="stylesheet" href='{% static "css/profile.css" %}'>
+{% endblock headscript %}
+
+{% block content %}
+<script>
+    function changeAttributes(id, pholder){
+        var x = document.getElementById(id);
+        x.removeAttribute("readonly");
+        x.required = true;
+        x.placeholder=pholder;
+        x.value="";
+    }
+
+    function changePassword(){
+        var codeblock = '<div>'+
+            '<label for="Opassword">Old password</label>'+
+            '<br>'+
+            '<input type="password" name="Opassword" id="Opassword" placeholder="Old Password" required>'+
+            '</div>'+
+
+            '<div>'+
+            '<label for="Npassword">New password</label>'+
+            '<br>'+
+            '<input type="password" name="Npassword" id="Npassword" placeholder="New password" required>'+
+            '</div>'+
+
+            '<div>'+
+            '<label for="confirm_Npassword">Confirm Password</label>'+
+            '<br>'+
+            '<input type="password" name="confirm_Npassword" id="confirm_Npassword" placeholder="Confirm new Password" required>'+
+            '<hr>'+
+            '</div>';
+
+            document.getElementById("change_password").innerHTML = codeblock;
+            document.getElementsByClassName("btn-signup")[0].onclick = confirmPass;
+            
+
+    }
+
+
+    function confirmPass() {
+        const pass = document.getElementById("Npassword").value;
+        const confirmed = document.getElementById("confirm_Npassword").value;
+        if (pass != confirmed) {
+            alert("password doesn't match please try again!!");
+            document.getElementById("frm").addEventListener("click", function (event) {
+                event.preventDefault();
+                location.reload();
+            });
+        }
+
+
+
+    }
+
+
+</script>
+
+<form class="submission-form" id="frm" method='POST'>
+    {% csrf_token %}
+    <div>
+        <label for="name">Current username</label>
+        <br>
+        <input type="text" name="UserName" id="name" value="xxxxxxxxxxxxxxxxx" readonly>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email" value="xxxxxxxxxxxxxxxxx" readonly>
+
+    </div>
+    <div id="change_password"></div>
+
+    <div>
+        <a href="#" onclick="changeAttributes('email', 'example@example.com')"> change email </a>
+    </div>
+
+    <div>
+        <a href="#" onclick="changeAttributes('name', 'Username')"> change username</a>
+    </div>
+
+    <div>
+        <a href="#" onclick="changePassword()">change password</a>
+        <hr>
+    </div>
+
+
+
+    <button class="btn-signup" type="submit">Submit</button>
+
+
+</form>
+
+
+
+
+{% endblock content %}

@@ -8,6 +8,19 @@
 {% endblock headscript %}
 
 {% block content %}
+<script>
+    function confirmPass() {
+        const pass = document.getElementById("password").value;
+        const confirmed = document.getElementById("confirm_password").value;
+        if (pass != confirmed) {
+            alert("password doesn't match please try again!!");
+            document.getElementById("frm").addEventListener("click", function (event) {
+                event.preventDefault();
+                location.reload();
+            });
+        }
+    }
+</script>
 
 <form class="submission-form" id="frm" method='POST'>
     {% csrf_token %}
@@ -40,23 +53,7 @@
 
 
 </form>
-<script>
-    function confirmPass() {
-        const pass = document.getElementById("password").value;
-        const confirmed = document.getElementById("confirm_password").value;
-        if (pass != confirmed) {
-            alert("password doesn't match please try again!!");
-            document.getElementById("frm").addEventListener("click", function (event) {
-                event.preventDefault()
-                location.reload();
-            });
-        }
 
-
-
-    }
-
-</script>
 
 
 {% endblock content %}
