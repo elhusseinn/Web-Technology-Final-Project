@@ -29,9 +29,34 @@
                         <a href="{% url 'changepassword' %}"> Change Password </a>
                     </div>
                 {% endif %}
-                
             </form>
+            
+        </div>
+        <div>
+            {% if user.is_superuser %}
+                <ul>
+                    {% for itr_user in users %}
+                        <li>
+                            <span>
+                                {{ itr_user.username }}
+                            </span>
+                            <span>
+                                <button onclick="changeAdminStatus('{{ itr_user.username }}');">
+                                    {% if itr_user.is_superuser %}
+                                        Remove Admin
+                                    {% else %}
+                                        Make Admin
+                                    {% endif %}
+                                </button>
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </div>
-
 {% endblock content %}
+
+{% block jsScripts %}
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock jsScripts %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -31,9 +31,6 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'user/register.html', {'form': form})
 
-def signin(request):
-    return render(request, 'user/signin.html')
-
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -41,6 +38,21 @@ def profile(request):
         if form.is_valid():
             user = form.save()
             return redirect('home')
-        return render(request, 'user/profile.html', {'form': form})
+        return render(request, 'user/profile.html', {'form': form, 'users': User.objects.all()})
     form = UserForm(instance=request.user)
-    return render(request, 'user/profile.html', {'form': form})
+    return render(request, 'user/profile.html', {'form': form, 'users': User.objects.all()})
+
+
+@login_required
+def changeAdminStatus(request):
+    if not request.user.is_superuser:
+        return redirect('home')
+    if request.method == 'POST':
+        user = request.POST.get('username')
+        user = User.objects.filter(username=user)[0]
+        user.is_superuser = not user.is_superuser
+        user.is_staff = not user.is_staff
+        user.save()
+        return HttpResponse('')
+            
+    
