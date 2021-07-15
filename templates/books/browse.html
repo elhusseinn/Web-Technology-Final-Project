@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} {{ title }} | University Library {% endblock title %}
+{% block title %} Books | University Library {% endblock title %}
 
 {% block headscript %}
 <link rel="stylesheet" href='{% static "css/common.css" %}'>
@@ -9,17 +9,20 @@
 
 {% block content %}
 
-<div class="flex-display">
-
-    {% for book in books %}
-    <div class="container py-5 book-card">
-        <h1>{{ book.title }}</h1>
-        <p>ISBN: {{ book.ISBN }}</p>
-        <p>Author: {{ book.author }}</p>
-        <p>Publish date: {{ book.publishDate }}</p>
-        <a href=" {% url 'bookdetails' book_id=book.id %}"><button class="btn btn-primary mt-3 me-2" type="button">Select Book</button></a>
+<div class="body-container container">
+    <div class="row">
+        {% for book in books %}
+        <div class="col-sm m-2 card">
+            <div class="card-body">
+                <h1>{{ book.title }}</h1>
+                <p>ISBN: {{ book.ISBN }}</p>
+                <p>Author: {{ book.author }}</p>
+                <p>Publish date: {{ book.publishDate }}</p>
+                <a href=" {% url 'bookdetails' book_id=book.id %}"><button class="btn btn-primary mt-3 me-2" type="button">Select Book</button></a>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
 
 </div>
