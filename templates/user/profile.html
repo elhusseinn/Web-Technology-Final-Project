@@ -34,14 +34,16 @@
         </div>
         <div>
             {% if user.is_superuser %}
-                <ul>
+                <ul class="list-group my-5">
                     {% for itr_user in users %}
-                        <li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>
                                 {{ itr_user.username }}
                             </span>
                             <span>
-                                <button onclick="changeAdminStatus('{{ itr_user.username }}');">
+                                <button
+                                    type="button" class="btn btn-{% if itr_user.is_superuser %}danger{% else %}success{% endif %}"
+                                    onclick="changeAdminStatus('{{ itr_user.username }}');">
                                     {% if itr_user.is_superuser %}
                                         Remove Admin
                                     {% else %}
