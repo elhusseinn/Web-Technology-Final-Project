@@ -9,25 +9,28 @@
 {% endblock headscript %}
 
 {% block content %}
+    <div class="container py-5 body-container">
+        <div class="row">
+            <div class="col-md">
+                <h1>Welcome to your online library</h1>
+                <p>Please sign up to borrow and return your books.</p>
+            </div>
+            <form class="col-md" method='POST'>
+                {% csrf_token %}
+                <h2 class="mb-3">Sign up</h2>
+                
+                {{ form|crispy }}
 
-
-<div class="container py-5 body-container">
-    <div class="row">
-        <div class="col-md">
-            <h1>Welcome to your online library</h1>
-            <p>Please sign up to borrow and return your books.</p>
+                <div id="hdn" style="display:none;" class="text-danger">
+                    Passwords doesn't match
+                </div>
+        
+                <button class="btn btn-dark mt-3" onclick="javascript:void(0)" type="submit">Sign up</button>
+            </form>
         </div>
-        <form class="col-md" method='POST'>
-            {% csrf_token %}
-            <h2 class="mb-3">Sign up</h2>
-            
-            {{ form|crispy }}
-    
-            <button class="btn btn-dark mt-3" onclick="javascript:void(0)" type="submit">Sign up</button>
-        </form>
     </div>
-</div>
-
-
-
 {% endblock content %}
+
+{% block jsScripts %}
+    <script src="{% static 'js/realTimePasswordValidation.js' %}"></script>
+{% endblock jsScripts %}

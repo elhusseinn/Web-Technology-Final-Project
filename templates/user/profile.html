@@ -20,6 +20,10 @@
                 <h2 class="mb-3">Profile</h2>
                 
                 {{ form|crispy }}
+
+                <div id="hdn" style="display:none;" class="text-danger">
+                    Passwords doesn't match
+                </div>
         
                 <button class="btn btn-dark mt-3" type="submit">Submit</button>
 
@@ -61,4 +65,5 @@
 
 {% block jsScripts %}
     <script src="{% static 'js/profile.js' %}"></script>
+    <script src="{% static 'js/realTimePasswordValidation.js' %}"></script>
 {% endblock jsScripts %}
