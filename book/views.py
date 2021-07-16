@@ -5,15 +5,29 @@ from .forms import *
 
 @login_required
 def bookDetails(request, book_id):
-    book = bookDetail.objects.filter(id=book_id)
-    return render(request, 'books/details.html', {"book": book[0]})
+    book = bookDetail.objects.filter(id=book_id)[0]
+    bookings = booking.objects.filter(bookedBook=book)
+    context = {
+        "book": book,
+    }
+    context['borrowed'] = bookings.exists()
+    if context['borrowed']:
+        context['borrowedByUser'] = bookings[0].bookedBy == request.user
+        context['borrowedUser'] = bookings[0].bookedBy
+    else:
+        context['borrowedByUser'] = False
+        
+
+    return render(request, 'books/details.html', context)
 
 def browse(request):
     books = bookDetail.objects.all()
-    bookings = booking.objects.all()
-    bookedBooks = [b.bookedBook for b in bookings if b.bookedBy != request.user]
-    freeBooks = filter(lambda x: x not in bookedBooks, books)
-    return render(request, 'books/browse.html', {'books': freeBooks})
+    if not request.user.is_superuser:
+        bookings = booking.objects.all()
+        bookedBooks = [b.bookedBook for b in bookings if b.bookedBy != request.user]
+        freeBooks = filter(lambda x: x not in bookedBooks, books)
+        return render(request, 'books/browse.html', {'books': freeBooks})
+    return render(request, 'books/browse.html', {'books': books})
 
 
 @login_required

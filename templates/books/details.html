@@ -14,8 +14,36 @@
     <p>Author: {{ book.author }}</p>
     <p>Publish date: {{ book.publishDate }}</p>
 
-    <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">Borrow</button>
-    <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">Return</button>
-    <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">Extend period</button>
+    {% if not borrowedByUser and borrowed %}
+        <p>Booked by : {{ borrowedUser.username }}</p>
+    {% endif %}
+
+    {% if not borrowed %}
+        <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">
+            Borrow
+        </button>
+    {% endif %}
+
+    {% if borrowedByUser %}
+        <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">
+            Return
+        </button>
+
+        <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">
+            Extend return period for an extra 10 days
+        </button>
+    {% endif %}
+
+    
+
+    {% if user.is_superuser %}
+        <button class="btn btn-danger mt-3 me-2" onclick="javascript:void(0)" type="button">
+            Delete
+        </button>
+        <button class="btn btn-info mt-3 me-2" onclick="javascript:void(0)" type="button">
+            Edit
+        </button>
+    {% endif %}
+
 </div>
 {% endblock content %}
