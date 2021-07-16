@@ -24,6 +24,11 @@
         {% endfor %}
     </div>
 
+    {% if user.is_superuser %}
+        <a href="{% url 'addbook' %}" class="btn">
+            Add Book
+        </a>
+    {% endif %}
 
 </div>
 

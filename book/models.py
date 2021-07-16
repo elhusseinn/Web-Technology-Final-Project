@@ -9,7 +9,6 @@ class bookDetail(models.Model):
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     publishDate = models.DateField(default=timezone.now)
-    borrowed = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title
