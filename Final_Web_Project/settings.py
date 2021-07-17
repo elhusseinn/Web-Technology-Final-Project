@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Home.apps.HomeConfig',
     'book.apps.BookConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'django_filters'
 ]
 
 MIDDLEWARE = [

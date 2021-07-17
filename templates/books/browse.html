@@ -3,29 +3,42 @@
 
 {% block title %} Books | University Library {% endblock title %}
 
+{% block headscript %}
+{% load crispy_forms_tags %}
+{% endblock headscript %}
+
 {% block content %}
 
-<div class="body-container container">
+<div class="body-container container-fluid">
     <div class="row">
-        {% for book in books %}
-        <div class="col-sm m-2 card">
-            <div class="card-body">
-                <h1>{{ book.title }}</h1>
-                <p>ISBN: {{ book.ISBN }}</p>
-                <p>Author: {{ book.author }}</p>
-                <p>Publish date: {{ book.publishDate }}</p>
-                <a href=" {% url 'bookdetails' book_id=book.id %}"><button class="btn btn-primary mt-3 me-2" type="button">Select Book</button></a>
+        <form method="get" class="col-lg-2 p-3">
+            <h3>Search</h3>
+            {{ books.form|crispy }}
+            <button class="btn btn-dark my-3 d-block btn-lg w-100" type="submit" >
+                Search
+            </button>
+            {% if user.is_superuser %}
+                <a href="{% url 'addbook' %}" class="my-3 btn btn-success d-block">
+                    Add Book
+                </a>
+            {% endif %}
+        </form>
+        <div class="col container">
+            <div class="row w-100">
+                {% for book in books.qs %}
+                <div class="col-md-4 m-2 card">
+                    <div class="card-body">
+                        <h1>{{ book.title }}</h1>
+                        <p>ISBN: {{ book.ISBN }}</p>
+                        <p>Author: {{ book.author }}</p>
+                        <p>Publish date: {{ book.publishDate }}</p>
+                        <a href=" {% url 'bookdetails' book_id=book.id %}"><button class="btn btn-primary mt-3 me-2" type="button">Select Book</button></a>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        {% endfor %}
     </div>
-
-    {% if user.is_superuser %}
-        <a href="{% url 'addbook' %}" class="my-3 btn btn-success">
-            Add Book
-        </a>
-    {% endif %}
-
 </div>
 
 

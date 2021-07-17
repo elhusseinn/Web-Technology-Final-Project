@@ -70,12 +70,8 @@ def bookDetails(request, book_id):
 
 def browse(request):
     books = bookDetail.objects.all()
-    if not request.user.is_superuser:
-        bookings = booking.objects.all()
-        bookedBooks = [b.bookedBook for b in bookings if b.bookedBy != request.user]
-        freeBooks = filter(lambda x: x not in bookedBooks, books)
-        return render(request, 'books/browse.html', {'books': freeBooks})
-    return render(request, 'books/browse.html', {'books': books})
+    filteredBooks = BookFilter(request.GET, queryset=books)
+    return render(request, 'books/browse.html', {'books': filteredBooks})
 
 
 @login_required
