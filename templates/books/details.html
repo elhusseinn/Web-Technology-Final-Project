@@ -13,36 +13,54 @@
     <p>ISBN: {{ book.ISBN }}</p>
     <p>Author: {{ book.author }}</p>
     <p>Publish date: {{ book.publishDate }}</p>
+    
+    {% if borrowed %}
+        <p>Return date: {{ returnDate }}</p>
+    {% endif %}
 
     {% if not borrowedByUser and borrowed %}
+        
         <p>Booked by : {{ borrowedUser.username }}</p>
     {% endif %}
 
+
+
     {% if not borrowed %}
-        <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">
-            Borrow
-        </button>
+        <a href="{% url 'borrowbook' book_id=book.id %}">
+            <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">
+                Borrow
+            </button>
+        </a>
     {% endif %}
 
     {% if borrowedByUser %}
-        <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">
-            Return
-        </button>
+        <a href="{% url 'returnbook' %}">
+            <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">
+                Return
+            </button>
+        </a>
 
-        <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">
-            Extend return period for an extra 10 days
-        </button>
+        <a href="{% url 'extend' %}">
+            <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">
+                Extend return period for an extra 10 days
+            </button>
+        </a>
     {% endif %}
 
     
 
     {% if user.is_superuser %}
-        <button class="btn btn-danger mt-3 me-2" onclick="javascript:void(0)" type="button">
-            Delete
-        </button>
-        <button class="btn btn-info mt-3 me-2" onclick="javascript:void(0)" type="button">
-            Edit
-        </button>
+        <a href="{% url 'deletebook' book_id=book.id %}">
+            <button class="btn btn-danger mt-3 me-2" onclick="javascript:void(0)" type="button">
+                Delete
+            </button>
+        </a>
+
+        <a href="{% url 'editbook' book_id=book.id %}">
+            <button class="btn btn-info mt-3 me-2" onclick="javascript:void(0)" type="button">
+                Edit
+            </button>
+        </a>
     {% endif %}
 
 </div>

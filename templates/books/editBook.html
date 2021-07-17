@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign in | University Library {% endblock title %}
+
+{% block headscript %}
+<link rel="stylesheet" href='{% static "css/common.css" %}'>
+{% load crispy_forms_tags %}
+{% endblock headscript %}
+
+{% block content %}
+<div class="container py-5 body-container">
+    <div class="row">
+        <div class="col-md">
+            <h1>Welcome back to your online library admin second page</h1>
+            <p>You can add books in here</p>
+        </div>
+        <form class="col-md" method='POST'>
+            {% csrf_token %}
+            <h2 class="mb-3">Add Book</h2>
+            
+            {{ form|crispy }}
+    
+            <button class="btn btn-dark mt-3" onclick="javascript:void(0)" type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
