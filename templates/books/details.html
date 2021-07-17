@@ -19,47 +19,36 @@
     {% endif %}
 
     {% if not borrowedByUser and borrowed %}
-        
         <p>Booked by : {{ borrowedUser.username }}</p>
     {% endif %}
 
 
 
     {% if not borrowed %}
-        <a href="{% url 'borrowbook' book_id=book.id %}">
-            <button class="btn btn-primary mt-3 me-2" onclick="javascript:void(0)" type="button">
-                Borrow
-            </button>
+        <a class="btn btn-primary mt-3 me-2" href="{% url 'borrowbook' book_id=book.id %}">
+            Borrow
         </a>
     {% endif %}
 
     {% if borrowedByUser %}
-        <a href="{% url 'returnbook' %}">
-            <button class="btn btn-success mt-3 me-2" onclick="javascript:void(0)" type="button">
-                Return
-            </button>
+        <a class="btn btn-success mt-3 me-2" href="{% url 'returnbook' %}">
+            Return
         </a>
 
-        <a href="{% url 'extend' %}">
-            <button class="btn btn-warning mt-3 me-2" onclick="javascript:void(0)" type="button">
-                Extend return period for an extra 10 days
-            </button>
+        <a class="btn btn-warning mt-3 me-2" href="{% url 'extend' %}">
+            Extend return period for an extra 10 days
         </a>
     {% endif %}
 
     
 
     {% if user.is_superuser %}
-        <a href="{% url 'deletebook' book_id=book.id %}">
-            <button class="btn btn-danger mt-3 me-2" onclick="javascript:void(0)" type="button">
-                Delete
-            </button>
+        <a class="btn btn-danger mt-3 me-2" href="{% url 'deletebook' book_id=book.id %}">
+            Delete
         </a>
 
-        <a href="{% url 'editbook' book_id=book.id %}">
-            <button class="btn btn-info mt-3 me-2" onclick="javascript:void(0)" type="button">
-                Edit
-            </button>
+        <a class="btn btn-info mt-3 me-2" href="{% url 'editbook' book_id=book.id %}">
+            Edit
         </a>
     {% endif %}
 
