@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} Sign in | University Library {% endblock title %}
+{% block title %} Edit books | University Library {% endblock title %}
 
 {% block headscript %}
     {% load crispy_forms_tags %}
@@ -11,12 +11,12 @@
 <div class="container py-5 body-container">
     <div class="row">
         <div class="col-md">
-            <h1>Welcome back to your online library admin second page</h1>
-            <p>You can add books in here</p>
+            <h1>Admin | Edit books</h1>
+            <p>You can edit books in here</p>
         </div>
         <form class="col-md" method='POST'>
             {% csrf_token %}
-            <h2 class="mb-3">Add Book</h2>
+            <h2 class="mb-3">Edit Book</h2>
             
             {{ form|crispy }}
     
